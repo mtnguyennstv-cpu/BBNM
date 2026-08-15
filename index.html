@@ -500,18 +500,20 @@
                 let vn = chk.getAttribute('data-vn');
                 let en = chk.getAttribute('data-en');
                 
-                // Lệnh điều kiện: Nếu là cột ĐV Thí nghiệm thì tự điền tên Mai Trọng Nguyên
                 let defaultName = "";
+                let editableAttr = 'contenteditable="true"'; // Mặc định cho phép người dùng gõ tên
+
+                // Lệnh điều kiện: Nếu là cột ĐV Thí nghiệm thì tự điền tên và KHÓA CHẶT LẠI
                 if (vn === "ĐV THÍ NGHIỆM") {
                     defaultName = "Mai Trọng Nguyên";
+                    editableAttr = 'contenteditable="false"'; // Lệnh khóa không cho sửa
                 }
 
-                // margin-top: 25mm; chính là lệnh đẩy tên tụt xuống 25mm để chừa chỗ ký
                 container.innerHTML += `
                     <div class="sig-box">
                         <h5 contenteditable="true">${vn}</h5>
                         <p contenteditable="true">${en}</p>
-                        <div contenteditable="true" style="margin-top: 20mm; font-size: 10pt; font-weight: bold;">${defaultName}</div>
+                        <div ${editableAttr} style="margin-top: 25mm; font-size: 10pt; font-weight: bold;">${defaultName}</div>
                     </div>
                 `;
             });
